@@ -1,0 +1,6 @@
+#TOR CONFIG FILE FOR EASY DEPLOYMENT OF SOCKS5 PROXIES AND HIDDEN SERVICES#
+
+SOCKSPort 9050
+Log notice file /var/log/tor/notices.log
+#HiddenServiceDir /var/lib/tor/hidden_service/
+#HiddenServicePort 80 127.0.0.1:80

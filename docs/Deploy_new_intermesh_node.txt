@@ -1,0 +1,38 @@
+##########################################
+# Steps to deploy a new Intramesh p2p node
+# Knots Modified: 11-30-17
+# Deploy an OpenVPN p2p node for gnet
+#########################################
+
+### THIS GUIDE IS STILL A WORK IN PROGRESS. ***YOU CAN USE IT NOW*** HOWEVER THE ROUTING MAY STILL
+### BE ALL FUCKED UP SO BE READY TO REDEPLOY IF WE PUSH BIG CHANGES!
+### TO DO:
+### - Modify steps to make connections persistent across reboots
+### - Modify openvpn routing setup
+### - Figure out better key management and access request system. 
+
+1) Spin up a new Debian Stretch server. You should have an internet connection, root console access, and a static IP or dynamic DNS setup. 
+
+2) Log into your server.
+
+3) Install git 
+    apt update
+    apt install -y git
+
+4) Create a directory for git
+    mkdir ~/git 
+
+5) Change your working directory to git and clone the intermesh repo 
+    cd ~/git && git clone https://git.jollo.org/gternet/architecture/intermesh.git
+
+6) Change your working direcotry to the intermesh one
+    cd ~/git/intermesh 
+
+7) Run the script
+    ./p2p_node_setup.sh
+
+8) Follow the prompts to finish setup it will build your keyserver and CA for openvpn. 
+   Note: You will be prompted to display the next setps after the script runs. copy and paste its output somewhere for you to reference. 
+
+9) You can now connect to your server over SSH on port 6666 with the username and password you specified at the start of the script
+

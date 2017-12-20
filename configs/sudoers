@@ -1,0 +1,7 @@
+#THIS IS SUDOERS FILE FOR gternet-cli#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+%admin ALL=(ALL) ALL
+%sudo   ALL=(ALL:ALL) ALL
+root    ALL=(ALL:ALL) ALL
