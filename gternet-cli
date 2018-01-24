@@ -22,6 +22,7 @@ function deploy_service {
     elif [ "$SRV" == "server" ]; then
         printf "${grn}Deploying optimized server configuration${end} ${red}(FRESH INSTALLS ONLY! ONLY TESTED ON DEBIAN/RASPBIAN)${end}"
         echo " "
+        source scripts/server_functions.sh
         machine_info
         set_motd
         set_sudoers
