@@ -71,36 +71,3 @@ function set_misc {
     cat configs/jail.local > /etc/fail2ban/jail.local
     service fail2ban start
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
