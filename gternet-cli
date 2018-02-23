@@ -8,17 +8,19 @@
 
 function deploy_service {
     if [ "$SRV" == "netbridge" ]; then
-	    printf "${grn}DEPLOYING OPENVPN P2P INTERMESH NODE!${end}"
+	printf "${grn}DEPLOYING OPENVPN P2P INTERMESH NODE!${end}"
         echo " "
         export P2PUSR="$ARG3"
         export PASS="$ARG4"
         export NODE_ID="$ARG5"
         scripts/netbridge_functions.sh
+
     elif [ "$SRV" == "mesh" ]; then
         printf "${grn}DEPLOYING A NEW MESHED DEVICE${end}"
         echo " "
         export IFACE="$ARG3"
         scripts/mesh_functions.sh
+
     elif [ "$SRV" == "server" ]; then
         printf "${grn}Deploying optimized server configuration${end} ${red}(FRESH INSTALLS ONLY! ONLY TESTED ON DEBIAN/RASPBIAN)${end}"
         echo " "
@@ -35,23 +37,23 @@ function deploy_service {
 }
 
 
-#CHECK FOR ROOT
+# CHECK FOR ROOT
 if [ "$USER" != "root" ];then
     echo "Please, run the script as root from /root/git/gternet-cli!"
     exit 1
 fi
 
-#IMPORT FUNCTIONS FROM SCRIPTS DIR
+# IMPORT FUNCTIONS FROM SCRIPTS DIR
 source scripts/*.sh
 
-#DEFINE SOME COLORS FOR OUTPUT
+# DEFINE SOME COLORS FOR OUTPUT
 red=$'\e[1;31m'
 grn=$'\e[1;32m'
 yel=$'\e[1;33m'
 end=$'\e[0m'
 #echo "error check 2"
 
-#DEFINE ARGS FOR DETERMINING WHAT TO DO INPUT
+# DEFINE ARGS FOR DETERMINING WHAT TO DO INPUT
 OP=$1
 SRV=$2
 #echo "error check 3"
@@ -61,13 +63,15 @@ if [ "$OP" == "deploy" ]; then
     ARG4=$4
     ARG5=$5
     deploy_service
+
 elif [ "$OP" == "services" ]; then
     printf "${red}Sorry! This feature is still in DEV${end}"
     echo " "
+
 elif [ "$OP" == "help" ]; then
     show_help
-#else
-	#printf "${red}Sorry! that is an invalid command${end}"
+    #else
+    #printf "${red}Sorry! that is an invalid command${end}"
     #echo " "
     #show_help
 fi

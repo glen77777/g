@@ -22,5 +22,3 @@ cat ${BASE_CONFIG} \
     ${KEY_DIR}/ta.key \
     <(echo -e '</tls-auth>') \
     > ${OUTPUT_DIR}/${1}.ovpn
-
-

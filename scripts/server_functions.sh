@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#FUNCTIONS TO DEPLOY A KNOWN WORKING SERVER CONFIGURATION ON A FRESH INSTALL#
+# FUNCTIONS TO DEPLOY A KNOWN WORKING SERVER CONFIGURATION ON A FRESH INSTALL
 
 function set_motd {
     cat <<-'EOF' > /etc/motd
@@ -19,13 +19,14 @@ function set_motd {
 
 function set_sudoers {
     cat configs/sudoers > /etc/sudoers
-	echo "$USERNAME    ALL=(ALL:ALL) ALL" >> /etc/sudoers
+    echo "$USERNAME    ALL=(ALL:ALL) ALL" >> /etc/sudoers
 }
 
 function set_sysctl {
-    #CHANGE SOME VALUES IN KERNEL
+    # CHANGE SOME VALUES IN KERNEL
+
     cat configs/sysctl.conf > /etc/sysctl.conf
-	sysctl -p
+    sysctl -p
 }
 
 function set_sshd {
@@ -40,9 +41,9 @@ function set_sources {
 }
 
 function set_sysctl {
-    #CHANGE SOME VALUES IN KERNEL
+    # CHANGE SOME VALUES IN KERNEL
     cat configs/sysctl.conf > /etc/sysctl.conf
-	sysctl -p
+    sysctl -p
 }
 
 function install_misc {
@@ -52,50 +53,21 @@ function install_misc {
 }
 
 function set_misc {
-    #DISABLE NTP AND STOP FROM STARTING AT BOOT
+    # DISABLE NTP AND STOP FROM STARTING AT BOOT
     service ntp stop
     update-rc.d -f ntp remove
-    #TOR CONFIGURATION
+
+    # TOR CONFIGURATION
     cat configs/torrc > /etc/tor/torrc
-	service tor restart
-	#ADD LOCALHOST AS NAME SERVER FOR TOR
-	sed -i '1s/^/#nameserver 127.0.0.1     #UNCOMMENT THIS IF YOU ENABLE TOR OR PROXYCHAINS/' 
-	#PROXYCHAINS CONFIGURATION
-	cat configs/proxychains.conf > /etc/proxychains.conf
-	#FAIL2BAN CONFIGURATION
+    service tor restart
+
+    # ADD LOCALHOST AS NAME SERVER FOR TOR
+    sed -i '1s/^/#nameserver 127.0.0.1     #UNCOMMENT THIS IF YOU ENABLE TOR OR PROXYCHAINS/' 
+
+    # PROXYCHAINS CONFIGURATION
+    cat configs/proxychains.conf > /etc/proxychains.conf
+
+    # FAIL2BAN CONFIGURATION
     cat configs/jail.local > /etc/fail2ban/jail.local
-	service fail2ban start
+    service fail2ban start
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

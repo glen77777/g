@@ -10,7 +10,7 @@ function install_batman {
 function set_batman {
     printf "${grn}Setting up batman-adv on interface $IFACE ${end}"
     echo " "
-	printf "${yel}Killing wpa_supplicant process to get handle on $IFACE device${end}"
+    printf "${yel}Killing wpa_supplicant process to get handle on $IFACE device${end}"
     echo " "
     killall wpa_supplicant
     modprobe batman-adv
