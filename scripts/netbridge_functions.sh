@@ -2,10 +2,10 @@
 
 source ../gternet-cli/gternet-cli
 
-#FUNCTIONS FOR DEPLOYING AN OPENVPN P2P INTERMESH BRIDGE##
+# FUNCTIONS FOR DEPLOYING AN OPENVPN P2P INTERMESH BRIDGE
 
 function machine_info {
-    #GET MACHINE INFO
+    # GET MACHINE INFO
     CLEARNET_ADDR=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
     printf "${grn}FOUND CLEARNET IP: $CLEARNET_ADDR ${end}"
     echo " "
@@ -13,7 +13,7 @@ function machine_info {
 }
 
 function ovpnca_user {
-    #CREATE USER
+    # CREATE USER
     printf "${grn}MAKING USER${end} $P2PUSR"
     echo " "
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $PASS)

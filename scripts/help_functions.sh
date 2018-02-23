@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#HELP AND NEXT STEPS FUNCTIONS#
+# HELP AND NEXT STEPS FUNCTIONS
 
 function show_help {
     echo " "
